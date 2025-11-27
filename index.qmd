@@ -120,14 +120,24 @@ format:
     const treatedData = generateCurve(100, 0, 3, 3);
     const untreatedData = generateCurve(100, 0, 3, 10);
 
-    const width = 800;
-    const height = 400;
-    const margin = {top: 40, right: 150, bottom: 60, left: 80};
+    // Make responsive
+    const container = document.getElementById("chart");
+    const containerWidth = container.clientWidth;
+    const width = Math.min(containerWidth, 800);
+    const height = Math.min(width * 0.5, 400);
+    const margin = {
+      top: 40, 
+      right: width < 600 ? 100 : 150, 
+      bottom: 60, 
+      left: width < 600 ? 60 : 80
+    };
 
     const svg = d3.select("#chart")
       .append("svg")
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet");
 
     const xScale = d3.scaleLinear()
       .domain([-5, 15])
@@ -150,6 +160,8 @@ format:
       .attr("y", 40)
       .attr("fill", "black")
       .attr("text-anchor", "middle")
+      .attr("font-size", "16px")
+      .attr("font-weight", "bold")
       .text("Time since symptom onset (days)");
 
     svg.append("g")
@@ -161,6 +173,8 @@ format:
       .attr("x", -height / 2)
       .attr("fill", "black")
       .attr("text-anchor", "middle")
+      .attr("font-size", "16px")
+      .attr("font-weight", "bold")
       .text("Pathogen load");
 
     svg.append("line")
@@ -178,7 +192,7 @@ format:
       .attr("x", xScale(0) + 5)
       .attr("y", margin.top + 20)
       .attr("fill", "#666")
-      .attr("font-size", "12px")
+      .attr("font-size", "14px")
       .attr("opacity", 0)
       .attr("id", "treatment-label")
       .text("Treatment");
@@ -197,7 +211,7 @@ format:
       .attr("x", width - margin.right + 10)
       .attr("y", yScale(treatedData[treatedData.length - 1].value))
       .attr("fill", "#2ecc71")
-      .attr("font-size", "14px")
+      .attr("font-size", "18px")
       .attr("font-weight", "bold")
       .text("Treated")
       .attr("opacity", 0.3);
@@ -216,7 +230,7 @@ format:
       .attr("x", width - margin.right + 10)
       .attr("y", yScale(untreatedData[untreatedData.length - 1].value))
       .attr("fill", "#e74c3c")
-      .attr("font-size", "14px")
+      .attr("font-size", "18px")
       .attr("font-weight", "bold")
       .text("Untreated")
       .attr("opacity", 0.3);
@@ -261,7 +275,9 @@ format:
         }
       });
 
-    window.addEventListener("resize", scroller.resize);
+    window.addEventListener("resize", () => {
+      scroller.resize();
+    });
   }
   
   if (document.readyState === 'loading') {
@@ -294,7 +310,7 @@ format:
 }
 
 .step {
-  min-height: 80vh;
+  min-height: 50vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -314,7 +330,7 @@ format:
 }
 
 .step:last-child {
-  margin-bottom: 50vh;
+  margin-bottom: 40vh;
 }
 
 /* Title Styles */
@@ -407,5 +423,30 @@ format:
   color: #95a5a6;
   font-size: 0.9em;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  #graphic {
+    height: 350px;
+  }
+  
+  .step-content {
+    max-width: 90%;
+    padding: 20px;
+  }
+  
+  #title-block-header {
+    margin-left: 20px;
+  }
+  
+  #title-block-header .title {
+    font-size: 1.4em;
+    padding-left: 10px;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
 </style>
-```
