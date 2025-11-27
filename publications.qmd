@@ -1,0 +1,35 @@
+---
+title: "Publications"
+---
+
+## Acute respiratory infections
+
+1. Wongnak P, Watson JA, Jittamala P, Schilling WHK, Seers T, Leopold SJ, et al. Accurate measurement of viral clearance in early phase antiviral studies in COVID-19. *The Journal of Infectious Diseases*. 2025 Aug 21. Available from: [http://www.ncbi.nlm.nih.gov/pubmed/40835230](http://www.ncbi.nlm.nih.gov/pubmed/40835230)
+
+2. White NJ, Schilling WHK, Jittamala P, Wongnak P, Watson JA. Assessing monoclonal antibodies for respiratory virus infections. *Lancet (London, England)*. 2025 Aug 9;406(10503):595–6. Available from: [http://www.ncbi.nlm.nih.gov/pubmed/40783280](http://www.ncbi.nlm.nih.gov/pubmed/40783280)
+
+3. Beer E, Boyd S, Wongnak P, Ngamprasertchai T, White NJ. A comparison of national seasonal influenza treatment guidelines across the Asia Pacific region. *PLOS Global Public Health*. 2025 Apr 1;5(4):e0004468. Available from: [http://www.ncbi.nlm.nih.gov/pubmed/40294018](http://www.ncbi.nlm.nih.gov/pubmed/40294018)
+
+4. Jittamala P, Boyd S, Schilling WHK, Watson JA, Ngamprasertchai T, Siripoon T, et al. Antiviral efficacy of fluoxetine in early symptomatic COVID-19: an open-label, randomised, controlled, adaptive platform trial (PLATCOV). *EClinicalMedicine*. 2025 Feb 1;80:103036. Available from: [http://www.ncbi.nlm.nih.gov/pubmed/39896880](http://www.ncbi.nlm.nih.gov/pubmed/39896880)
+
+5. Boyd S, Singh S, Schilling WHK, White NJ. Evidence that remdesivir treatment reduces viral titers in patients with COVID-19. *Antimicrobial Agents and Chemotherapy*. 2024 Dec 1;68(12). [https://pmc.ncbi.nlm.nih.gov/articles/PMC11619477/](https://pmc.ncbi.nlm.nih.gov/articles/PMC11619477/)
+
+6. Luvira V, Schilling WHK, Jittamala P, Watson JA, Boyd S, Siripoon T, et al. Clinical antiviral efficacy of favipiravir in early COVID-19 (PLATCOV): an open-label, randomised, controlled, adaptive platform trial. *BMC Infectious Diseases*. 2024 Dec 1;24(1). [https://pubmed.ncbi.nlm.nih.gov/38225598/](https://pubmed.ncbi.nlm.nih.gov/38225598/)
+
+7. Schilling WHK, Jittamala P, Watson JA, Boyd S, Luvira V, Siripoon T, et al. Antiviral efficacy of molnupiravir versus ritonavir-boosted nirmatrelvir in patients with early symptomatic COVID-19 (PLATCOV): an open-label, phase 2, randomised, controlled, adaptive trial. *The Lancet Infectious Diseases*. 2024 Jan 1;24(1):36–45. [https://pubmed.ncbi.nlm.nih.gov/37778363/](https://pubmed.ncbi.nlm.nih.gov/37778363/)
+
+8. Wongnak P, Schilling WHK, Jittamala P, Boyd S, Luvira V, Siripoon T, et al. Temporal changes in SARS-CoV-2 clearance kinetics and the optimal design of antiviral pharmacodynamic studies: an individual patient data meta-analysis of a randomised, controlled, adaptive platform study (PLATCOV). *The Lancet Infectious Diseases*. 2024 Sep 1;24(9):953–63. [https://pubmed.ncbi.nlm.nih.gov/38677300/](https://pubmed.ncbi.nlm.nih.gov/38677300/)
+
+9. Schilling WHK, Jittamala P, Watson JA, Ekkapongpisit M, Siripoon T, Ngamprasertchai T, et al. Pharmacometrics of high-dose ivermectin in early COVID-19 from an open label, randomized, controlled adaptive platform trial (PLATCOV). *eLife*. 2023 Feb 21;12. [https://pubmed.ncbi.nlm.nih.gov/36803992/](https://pubmed.ncbi.nlm.nih.gov/36803992/)
+
+10. Jittamala P, Schilling WHK, Watson JA, Luvira V, Siripoon T, Ngamprasertchai T, et al. Clinical Antiviral Efficacy of Remdesivir in Coronavirus Disease 2019: An Open-Label, Randomized Controlled Adaptive Platform Trial (PLATCOV). *Journal of Infectious Diseases*. 2023 Nov 15;228(10):1318–25. [https://pubmed.ncbi.nlm.nih.gov/37470445/](https://pubmed.ncbi.nlm.nih.gov/37470445/)
+
+11. Watson JA, Kissler SM, Day NPJ, Grad YH, White NJ. Characterizing SARS-CoV-2 Viral Clearance Kinetics to Improve the Design of Antiviral Pharmacometric Studies. *Antimicrobial Agents and Chemotherapy*. 2022 Jul 1;66(7). [https://pubmed.ncbi.nlm.nih.gov/35736134/](https://pubmed.ncbi.nlm.nih.gov/35736134/)
+
+## Dengue and other arboviral infections 
+
+*Publications coming soon*
+
+## Malaria 
+
+*Publications coming soon*

@@ -1,0 +1,12 @@
+---
+title: "Mission"
+---
+
+## Our Mission
+
+Safe and effective antimicrobial therapies must be treated as a global public good. Current drug development pathways fail to sustain the pipeline of treatments needed for pandemic threats. The OPERA mission is to accelerate the development of anti-infective therapies through efficient drug selection and testing based on measuring pathogen clearance.
+
+## Our Approach
+
+Preselecting anti-infectives by their capacity to reduce pathogen load enables more efficient use of trial resources, particularly for publicly funded research. Academia-led Phase 2 trials using pathogen clearance endpoints can serve as a public good—ensuring anti-infectives are developed efficiently, transparently, and in the interest of global health rather than solely commercial gain.
+

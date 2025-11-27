@@ -1,0 +1,411 @@
+---
+title: "Open Platform for Evaluation of Repurposed Anti-infectives"
+format: 
+  html:
+    page-layout: custom
+---
+
+```{=html}
+<div class="column-screen-inset">
+<div id="scroll-container">
+  <div id="graphic">
+    <div id="chart"></div>
+  </div>
+  
+  <div id="sections">
+    <section class="step" data-step="0">
+      <div class="step-content">
+        <h2>The Challenge</h2>
+        <p>When infection occurs, pathogen load increases rapidly in the body, reaching peak levels within days of symptom onset.</p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="1">
+      <div class="step-content">
+        <h2>Untreated Population</h2>
+        <p>Without effective treatment, some acute infections clear slowly through natural immune responses. However, in severe infections like malaria, pathogen loads can continue to increase when left untreated, leading to life-threatening outcomes.</p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="2">
+      <div class="step-content">
+        <h2>Treated Population</h2>
+        <p>At the critical moment, treatment is administered. With treatment, pathogen clearance is rapid. The steep initial decline in the log curve reflects the direct drug effect on pathogen replication.</p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="3">
+      <div class="step-content">
+        <h2>The Drug Effect</h2>
+        <p>The relative difference in the log-linear slope of pathogen clearance rate between the treated (green) and untreated (red) populations represents the drug effect. The steeper decline in the treated curve directly measures the therapeutic impact on pathogen dynamics.</p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="4">
+      <div class="step-content">
+        <h2>The OPERA Initiative</h2>
+        <p>Our research focuses on optimizing treatment strategies by understanding pathogen clearance dynamics. A key requirement for advancing anti-infective drugs through clinical development is demonstrating their ability to accelerate pathogen clearance in humans.</p>
+      </div>
+    </section>
+  </div>
+</div>
+</div>
+
+<footer id="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>About OPERA</h3>
+      <p>Optimizing treatment strategies through innovative research in pathogen dynamics.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <div class="social-links">
+        <a href="https://bsky.app" target="_blank" title="Bluesky">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/>
+          </svg>
+          Bluesky
+        </a>
+        <a href="mailto:contact@opera.org">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Contact
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2025 OPERA Initiative. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/scrollama"></script>
+
+<script>
+(function() {
+  function initVisualization() {
+    if (typeof d3 === 'undefined' || typeof scrollama === 'undefined') {
+      setTimeout(initVisualization, 100);
+      return;
+    }
+    
+    function generateCurve(peak, peakTime, rise, fall) {
+      const data = [];
+      for (let t = -5; t <= 15; t += 0.5) {
+        let value;
+        if (t < peakTime) {
+          value = peak * Math.exp(-Math.pow((t - peakTime) / rise, 2));
+        } else {
+          value = peak * Math.exp(-(t - peakTime) / fall);
+        }
+        data.push({time: t, value: value});
+      }
+      return data;
+    }
+
+    const treatedData = generateCurve(100, 0, 3, 3);
+    const untreatedData = generateCurve(100, 0, 3, 10);
+
+    const width = 800;
+    const height = 400;
+    const margin = {top: 40, right: 150, bottom: 60, left: 80};
+
+    const svg = d3.select("#chart")
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    const xScale = d3.scaleLinear()
+      .domain([-5, 15])
+      .range([margin.left, width - margin.right]);
+
+    const yScale = d3.scaleLinear()
+      .domain([0, 120])
+      .range([height - margin.bottom, margin.top]);
+
+    const line = d3.line()
+      .x(d => xScale(d.time))
+      .y(d => yScale(d.value))
+      .curve(d3.curveBasis);
+
+    svg.append("g")
+      .attr("transform", `translate(0,${height - margin.bottom})`)
+      .call(d3.axisBottom(xScale))
+      .append("text")
+      .attr("x", width / 2)
+      .attr("y", 40)
+      .attr("fill", "black")
+      .attr("text-anchor", "middle")
+      .text("Time since symptom onset (days)");
+
+    svg.append("g")
+      .attr("transform", `translate(${margin.left},0)`)
+      .call(d3.axisLeft(yScale).tickValues([]))
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -50)
+      .attr("x", -height / 2)
+      .attr("fill", "black")
+      .attr("text-anchor", "middle")
+      .text("Pathogen load");
+
+    svg.append("line")
+      .attr("x1", xScale(0))
+      .attr("x2", xScale(0))
+      .attr("y1", margin.top)
+      .attr("y2", height - margin.bottom)
+      .attr("stroke", "#666")
+      .attr("stroke-dasharray", "5,5")
+      .attr("stroke-width", 2)
+      .attr("opacity", 0)
+      .attr("id", "treatment-line");
+
+    svg.append("text")
+      .attr("x", xScale(0) + 5)
+      .attr("y", margin.top + 20)
+      .attr("fill", "#666")
+      .attr("font-size", "12px")
+      .attr("opacity", 0)
+      .attr("id", "treatment-label")
+      .text("Treatment");
+
+    svg.append("path")
+      .datum(treatedData)
+      .attr("class", "curve treated")
+      .attr("fill", "none")
+      .attr("stroke", "#2ecc71")
+      .attr("stroke-width", 4)
+      .attr("d", line)
+      .attr("opacity", 0.3);
+
+    svg.append("text")
+      .attr("class", "label treated")
+      .attr("x", width - margin.right + 10)
+      .attr("y", yScale(treatedData[treatedData.length - 1].value))
+      .attr("fill", "#2ecc71")
+      .attr("font-size", "14px")
+      .attr("font-weight", "bold")
+      .text("Treated")
+      .attr("opacity", 0.3);
+
+    svg.append("path")
+      .datum(untreatedData)
+      .attr("class", "curve untreated")
+      .attr("fill", "none")
+      .attr("stroke", "#e74c3c")
+      .attr("stroke-width", 4)
+      .attr("d", line)
+      .attr("opacity", 0.3);
+
+    svg.append("text")
+      .attr("class", "label untreated")
+      .attr("x", width - margin.right + 10)
+      .attr("y", yScale(untreatedData[untreatedData.length - 1].value))
+      .attr("fill", "#e74c3c")
+      .attr("font-size", "14px")
+      .attr("font-weight", "bold")
+      .text("Untreated")
+      .attr("opacity", 0.3);
+
+    const scroller = scrollama();
+
+    scroller
+      .setup({
+        step: ".step",
+        offset: 0.5
+      })
+      .onStepEnter(response => {
+        const step = response.index;
+        
+        svg.selectAll(".curve").transition().duration(500).attr("opacity", 0.2);
+        svg.selectAll(".label").transition().duration(500).attr("opacity", 0.2);
+        svg.select("#treatment-line").transition().duration(500).attr("opacity", 0);
+        svg.select("#treatment-label").transition().duration(500).attr("opacity", 0);
+        
+        if (step === 0) {
+          // The Challenge - show both curves clearly
+          svg.selectAll(".curve").transition().duration(500).attr("opacity", 0.7);
+          svg.selectAll(".label").transition().duration(500).attr("opacity", 0.7);
+        } else if (step === 1) {
+          // Untreated Population
+          svg.select(".curve.untreated").transition().duration(500).attr("opacity", 1);
+          svg.select(".label.untreated").transition().duration(500).attr("opacity", 1);
+          svg.select(".curve.treated").transition().duration(500).attr("opacity", 0.2);
+        } else if (step === 2) {
+          // Treated Population
+          svg.select(".curve.treated").transition().duration(500).attr("opacity", 1);
+          svg.select(".label.treated").transition().duration(500).attr("opacity", 1);
+          svg.select(".curve.untreated").transition().duration(500).attr("opacity", 0.2);
+          svg.select("#treatment-line").transition().duration(500).attr("opacity", 0.8);
+          svg.select("#treatment-label").transition().duration(500).attr("opacity", 0.8);
+        } else if (step === 3 || step === 4) {
+          // Drug Effect and OPERA Mission - show both curves
+          svg.selectAll(".curve").transition().duration(500).attr("opacity", 1);
+          svg.selectAll(".label").transition().duration(500).attr("opacity", 1);
+          svg.select("#treatment-line").transition().duration(500).attr("opacity", 0.3);
+          svg.select("#treatment-label").transition().duration(500).attr("opacity", 0.3);
+        }
+      });
+
+    window.addEventListener("resize", scroller.resize);
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVisualization);
+  } else {
+    initVisualization();
+  }
+})();
+</script>
+
+<style>
+#scroll-container {
+  position: relative;
+}
+
+#graphic {
+  position: sticky;
+  top: 100px;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+#sections {
+  position: relative;
+  z-index: 1;
+}
+
+.step {
+  min-height: 80vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.step-content {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.step:first-child {
+  margin-top: -200px;
+}
+
+.step:last-child {
+  margin-bottom: 50vh;
+}
+
+/* Title Styles */
+#title-block-header {
+  margin-left: 60px;
+}
+
+#title-block-header .title {
+  font-size: 1.8em;
+  padding-left: 20px;
+}
+
+/* Footer Styles */
+#site-footer {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 40px 20px 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  color: #3498db;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.footer-section p {
+  line-height: 1.6;
+  color: #bdc3c7;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #3498db;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #3498db;
+}
+
+.social-links svg {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid #34495e;
+  text-align: center;
+  color: #95a5a6;
+  font-size: 0.9em;
+}
+</style>
+```
