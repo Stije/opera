@@ -67,6 +67,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/scrollama"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -147,90 +149,93 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="column-screen-inset">
 <div id="scroll-container">
-<div id="graphic">
-<pre><code>&lt;div id="chart"&gt;&lt;/div&gt;</code></pre>
+  <div id="graphic">
+    <div id="chart"></div>
+  </div>
+  
+  <div id="sections">
+    <section class="step" data-step="0">
+      <div class="step-content">
+        <h2>The Challenge</h2>
+        <p>When infections occur, pathogen loads can increase rapidly in the body. As a rule of thumb: The more infecting organisms there are - ​the worse is the disease.</p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="1">
+      <div class="step-content">
+        <h2>Untreated Population</h2>
+        <p>Without effective treatment, some acute infections clear slowly through natural immune responses. In severe infections like malaria, pathogen loads can continue to increase when left untreated, leading to life-threatening outcomes.</p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="2">
+      <div class="step-content">
+        <h2>Treated Population</h2>
+        <p> With effective treatment, infecting organisms are removed. Here counts: The faster the pathogen load is removed - the better is the outcome. </p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="3">
+      <div class="step-content">
+        <h2>The Drug Effect</h2>
+        <p>The relative difference in the log-linear slope of pathogen clearance rate between the treated (green) and untreated (red) populations represents the drug effect. The steeper decline in the treated curve directly measures the therapeutic impact on pathogen dynamics.</p>
+      </div>
+    </section>
+    
+    <section class="step" data-step="4">
+      <div class="step-content">
+        <h2>The OPERA Initiative</h2>
+        <p>We believe that demonstrating the ability of anti-infective drugs to accelerate pathogen clearance in humans should be a key requirement for advancing them through clinical development. Research focusing on optimizing treatment strategies by understanding pathogen clearance dynamics and using the rate of clearance as an endpoint could help accelerate drug development.</p>
+      </div>
+    </section>
+  </div>
 </div>
-<div id="sections">
-<pre><code>&lt;section class="step" data-step="0"&gt;
-  &lt;div class="step-content"&gt;
-    &lt;h2&gt;The Challenge&lt;/h2&gt;
-    &lt;p&gt;When infection occurs, pathogen load increases rapidly in the body, reaching peak levels within days of symptom onset.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/section&gt;
-
-&lt;section class="step" data-step="1"&gt;
-  &lt;div class="step-content"&gt;
-    &lt;h2&gt;Untreated Population&lt;/h2&gt;
-    &lt;p&gt;Without effective treatment, some acute infections clear slowly through natural immune responses. However, in severe infections like malaria, pathogen loads can continue to increase when left untreated, leading to life-threatening outcomes.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/section&gt;
-
-&lt;section class="step" data-step="2"&gt;
-  &lt;div class="step-content"&gt;
-    &lt;h2&gt;Treated Population&lt;/h2&gt;
-    &lt;p&gt;At the critical moment, treatment is administered. With treatment, pathogen clearance is rapid. The steep initial decline in the log curve reflects the direct drug effect on pathogen replication.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/section&gt;
-
-&lt;section class="step" data-step="3"&gt;
-  &lt;div class="step-content"&gt;
-    &lt;h2&gt;The Drug Effect&lt;/h2&gt;
-    &lt;p&gt;The relative difference in the log-linear slope of pathogen clearance rate between the treated (green) and untreated (red) populations represents the drug effect. The steeper decline in the treated curve directly measures the therapeutic impact on pathogen dynamics.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/section&gt;
-
-&lt;section class="step" data-step="4"&gt;
-  &lt;div class="step-content"&gt;
-    &lt;h2&gt;The OPERA Initiative&lt;/h2&gt;
-    &lt;p&gt;Our research focuses on optimizing treatment strategies by understanding pathogen clearance dynamics. A key requirement for advancing anti-infective drugs through clinical development is demonstrating their ability to accelerate pathogen clearance in humans.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/section&gt;</code></pre>
 </div>
-</div>
-</div>
+
 <footer id="site-footer">
-<div class="footer-content">
-<pre><code>&lt;div class="footer-section"&gt;
-  &lt;h3&gt;About OPERA&lt;/h3&gt;
-  &lt;p&gt;Open Platform for Evaluation of Repurposed Anti-infectives.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="footer-section"&gt;
-  &lt;h3&gt;Quick Links&lt;/h3&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href="about.html"&gt;About Us&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="projects.html"&gt;Projects&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href="publications.html"&gt;Publications&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class="footer-section"&gt;
-  &lt;h3&gt;Connect&lt;/h3&gt;
-  &lt;div class="social-links"&gt;
-    &lt;a href="https://bsky.app" target="_blank" title="Bluesky"&gt;
-      &lt;svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"&gt;
-        &lt;path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/&gt;
-      &lt;/svg&gt;
-      Bluesky
-    &lt;/a&gt;
-    &lt;a href="mailto:contact@opera.org"&gt;
-      &lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
-        &lt;path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"&gt;&lt;/path&gt;
-        &lt;polyline points="22,6 12,13 2,6"&gt;&lt;/polyline&gt;
-      &lt;/svg&gt;
-      Contact
-    &lt;/a&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-</div>
-<div class="footer-bottom">
-<pre><code>&lt;p&gt;&amp;copy; 2025 OPERA Initiative. All rights reserved.&lt;/p&gt;</code></pre>
-</div>
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>About OPERA</h3>
+      <p>Open Platform for Evaluation of Repurposed Anti-infectives.</p>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Connect</h3>
+      <div class="social-links">
+        <a href="https://bsky.app" target="_blank" title="Bluesky">
+          <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path>
+          </svg>
+          Bluesky
+        </a>
+        <a href="mailto:contact@opera.org">
+          <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          Contact
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 OPERA Initiative. All rights reserved.</p>
+  </div>
 </footer>
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="https://unpkg.com/scrollama"></script>
 <script>
 (function() {
+  let svg, scroller, xScale, yScale, line, treatedData, untreatedData;
+  
   function initVisualization() {
     if (typeof d3 === 'undefined' || typeof scrollama === 'undefined') {
       setTimeout(initVisualization, 100);
@@ -251,50 +256,101 @@ ul.task-list li input[type="checkbox"] {
       return data;
     }
 
-    const treatedData = generateCurve(100, 0, 3, 3);
-    const untreatedData = generateCurve(100, 0, 3, 10);
+    treatedData = generateCurve(100, 0, 3, 3);
+    untreatedData = generateCurve(100, 0, 3, 10);
 
-    // Make responsive
+    drawChart();
+    
+    scroller = scrollama();
+    scroller
+      .setup({
+        step: ".step",
+        offset: 0.5
+      })
+      .onStepEnter(response => {
+        const step = response.index;
+        
+        svg.selectAll(".curve").transition().duration(500).attr("opacity", 0.2);
+        svg.selectAll(".label").transition().duration(500).attr("opacity", 0.2);
+        svg.select("#treatment-line").transition().duration(500).attr("opacity", 0);
+        svg.select("#treatment-label").transition().duration(500).attr("opacity", 0);
+        
+        if (step === 0) {
+          svg.selectAll(".curve").transition().duration(500).attr("opacity", 0.7);
+          svg.selectAll(".label").transition().duration(500).attr("opacity", 0.7);
+        } else if (step === 1) {
+          svg.select(".curve.untreated").transition().duration(500).attr("opacity", 1);
+          svg.select(".label.untreated").transition().duration(500).attr("opacity", 1);
+          svg.select(".curve.treated").transition().duration(500).attr("opacity", 0.2);
+        } else if (step === 2) {
+          svg.select(".curve.treated").transition().duration(500).attr("opacity", 1);
+          svg.select(".label.treated").transition().duration(500).attr("opacity", 1);
+          svg.select(".curve.untreated").transition().duration(500).attr("opacity", 0.2);
+          svg.select("#treatment-line").transition().duration(500).attr("opacity", 0.8);
+          svg.select("#treatment-label").transition().duration(500).attr("opacity", 0.8);
+        } else if (step === 3 || step === 4) {
+          svg.selectAll(".curve").transition().duration(500).attr("opacity", 1);
+          svg.selectAll(".label").transition().duration(500).attr("opacity", 1);
+          svg.select("#treatment-line").transition().duration(500).attr("opacity", 0.3);
+          svg.select("#treatment-label").transition().duration(500).attr("opacity", 0.3);
+        }
+      });
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        d3.select("#chart").selectAll("*").remove();
+        drawChart();
+        scroller.resize();
+      }, 250);
+    });
+  }
+  
+  function drawChart() {
     const container = document.getElementById("chart");
-    const containerWidth = container.clientWidth;
-    const width = Math.min(containerWidth, 800);
-    const height = Math.min(width * 0.5, 400);
+    const containerWidth = container.clientWidth || 800;
+    const width = Math.max(Math.min(containerWidth - 20, 800), 300);
+    const height = Math.max(Math.min(width * 0.5, 400), 150);
     const margin = {
       top: 40, 
-      right: width < 600 ? 100 : 150, 
+      right: width < 600 ? 80 : 150, 
       bottom: 60, 
-      left: width < 600 ? 60 : 80
+      left: width < 600 ? 50 : 80
     };
 
-    const svg = d3.select("#chart")
+    svg = d3.select("#chart")
       .append("svg")
       .attr("width", width)
       .attr("height", height)
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("preserveAspectRatio", "xMidYMid meet");
 
-    const xScale = d3.scaleLinear()
+    xScale = d3.scaleLinear()
       .domain([-5, 15])
       .range([margin.left, width - margin.right]);
 
-    const yScale = d3.scaleLinear()
+    yScale = d3.scaleLinear()
       .domain([0, 120])
       .range([height - margin.bottom, margin.top]);
 
-    const line = d3.line()
+    line = d3.line()
       .x(d => xScale(d.time))
       .y(d => yScale(d.value))
       .curve(d3.curveBasis);
 
+    const fontSize = width < 600 ? "12px" : "16px";
+    const labelSize = width < 600 ? "14px" : "18px";
+
     svg.append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(xScale))
+      .call(d3.axisBottom(xScale).ticks(width < 600 ? 5 : 10))
       .append("text")
       .attr("x", width / 2)
       .attr("y", 40)
       .attr("fill", "black")
       .attr("text-anchor", "middle")
-      .attr("font-size", "16px")
+      .attr("font-size", fontSize)
       .attr("font-weight", "bold")
       .text("Time since symptom onset (days)");
 
@@ -303,11 +359,11 @@ ul.task-list li input[type="checkbox"] {
       .call(d3.axisLeft(yScale).tickValues([]))
       .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", -50)
+      .attr("y", width < 600 ? -35 : -50)
       .attr("x", -height / 2)
       .attr("fill", "black")
       .attr("text-anchor", "middle")
-      .attr("font-size", "16px")
+      .attr("font-size", fontSize)
       .attr("font-weight", "bold")
       .text("Pathogen load");
 
@@ -326,7 +382,7 @@ ul.task-list li input[type="checkbox"] {
       .attr("x", xScale(0) + 5)
       .attr("y", margin.top + 20)
       .attr("fill", "#666")
-      .attr("font-size", "14px")
+      .attr("font-size", width < 600 ? "11px" : "14px")
       .attr("opacity", 0)
       .attr("id", "treatment-label")
       .text("Treatment");
@@ -336,7 +392,7 @@ ul.task-list li input[type="checkbox"] {
       .attr("class", "curve treated")
       .attr("fill", "none")
       .attr("stroke", "#2ecc71")
-      .attr("stroke-width", 4)
+      .attr("stroke-width", width < 600 ? 3 : 4)
       .attr("d", line)
       .attr("opacity", 0.3);
 
@@ -345,7 +401,7 @@ ul.task-list li input[type="checkbox"] {
       .attr("x", width - margin.right + 10)
       .attr("y", yScale(treatedData[treatedData.length - 1].value))
       .attr("fill", "#2ecc71")
-      .attr("font-size", "18px")
+      .attr("font-size", labelSize)
       .attr("font-weight", "bold")
       .text("Treated")
       .attr("opacity", 0.3);
@@ -355,7 +411,7 @@ ul.task-list li input[type="checkbox"] {
       .attr("class", "curve untreated")
       .attr("fill", "none")
       .attr("stroke", "#e74c3c")
-      .attr("stroke-width", 4)
+      .attr("stroke-width", width < 600 ? 3 : 4)
       .attr("d", line)
       .attr("opacity", 0.3);
 
@@ -364,54 +420,10 @@ ul.task-list li input[type="checkbox"] {
       .attr("x", width - margin.right + 10)
       .attr("y", yScale(untreatedData[untreatedData.length - 1].value))
       .attr("fill", "#e74c3c")
-      .attr("font-size", "18px")
+      .attr("font-size", labelSize)
       .attr("font-weight", "bold")
       .text("Untreated")
       .attr("opacity", 0.3);
-
-    const scroller = scrollama();
-
-    scroller
-      .setup({
-        step: ".step",
-        offset: 0.5
-      })
-      .onStepEnter(response => {
-        const step = response.index;
-        
-        svg.selectAll(".curve").transition().duration(500).attr("opacity", 0.2);
-        svg.selectAll(".label").transition().duration(500).attr("opacity", 0.2);
-        svg.select("#treatment-line").transition().duration(500).attr("opacity", 0);
-        svg.select("#treatment-label").transition().duration(500).attr("opacity", 0);
-        
-        if (step === 0) {
-          // The Challenge - show both curves clearly
-          svg.selectAll(".curve").transition().duration(500).attr("opacity", 0.7);
-          svg.selectAll(".label").transition().duration(500).attr("opacity", 0.7);
-        } else if (step === 1) {
-          // Untreated Population
-          svg.select(".curve.untreated").transition().duration(500).attr("opacity", 1);
-          svg.select(".label.untreated").transition().duration(500).attr("opacity", 1);
-          svg.select(".curve.treated").transition().duration(500).attr("opacity", 0.2);
-        } else if (step === 2) {
-          // Treated Population
-          svg.select(".curve.treated").transition().duration(500).attr("opacity", 1);
-          svg.select(".label.treated").transition().duration(500).attr("opacity", 1);
-          svg.select(".curve.untreated").transition().duration(500).attr("opacity", 0.2);
-          svg.select("#treatment-line").transition().duration(500).attr("opacity", 0.8);
-          svg.select("#treatment-label").transition().duration(500).attr("opacity", 0.8);
-        } else if (step === 3 || step === 4) {
-          // Drug Effect and OPERA Mission - show both curves
-          svg.selectAll(".curve").transition().duration(500).attr("opacity", 1);
-          svg.selectAll(".label").transition().duration(500).attr("opacity", 1);
-          svg.select("#treatment-line").transition().duration(500).attr("opacity", 0.3);
-          svg.select("#treatment-label").transition().duration(500).attr("opacity", 0.3);
-        }
-      });
-
-    window.addEventListener("resize", () => {
-      scroller.resize();
-    });
   }
   
   if (document.readyState === 'loading') {
@@ -466,7 +478,6 @@ ul.task-list li input[type="checkbox"] {
   margin-bottom: 40vh;
 }
 
-/* Title Styles */
 #title-block-header {
   margin-left: 60px;
 }
@@ -476,7 +487,6 @@ ul.task-list li input[type="checkbox"] {
   padding-left: 20px;
 }
 
-/* Footer Styles */
 #site-footer {
   background-color: #2c3e50;
   color: #ecf0f1;
@@ -557,7 +567,6 @@ ul.task-list li input[type="checkbox"] {
   font-size: 0.9em;
 }
 
-/* Mobile responsive styles */
 @media (max-width: 768px) {
   #graphic {
     height: 350px;
