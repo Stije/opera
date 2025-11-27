@@ -55,7 +55,7 @@ format:
   <div class="footer-content">
     <div class="footer-section">
       <h3>About OPERA</h3>
-      <p>Optimizing treatment strategies through innovative research in pathogen dynamics.</p>
+      <p>Open Platform for Evaluation of Repurposed Anti-infectives.</p>
     </div>
     
     <div class="footer-section">
